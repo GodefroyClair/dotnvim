@@ -78,6 +78,8 @@ Plug 'jalvesaq/Nvim-R'
 "Markdown
 Plug 'plasticboy/vim-markdown'
 
+"C
+Plug 'critiqjo/lldb.nvim'
 
 " all of your plugins must be added before 
 call plug#end()            " required
