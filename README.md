@@ -8,7 +8,7 @@ configure files of nvim
 
 Installation:
 
-    git clone git://github.com/GodefroyClair/dotnvim.git ~/.config/nvim/init.vim
+    git clone git://github.com/GodefroyClair/dotnvim.git ~/.config/nvim/
 
 
 todo : 
