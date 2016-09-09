@@ -85,14 +85,14 @@ set matchtime=3
 "PLUGINS TUNING {{{1
 "SYNTASTIC {{{2
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 " let g:syntastic_quiet_messages = { "type": "style" }
 " let g:syntastic_php_phpcs_quiet_messages = { 
 "     \ 'regex': [
@@ -216,10 +216,10 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " expand($MYVIMRC:h)/plugInit.vim
 
 "" Nuke Arrow Keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
 "
 
 ""nvim terminal emulation window commands
@@ -232,6 +232,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" CTAGS {{{1
+"ctags config
+
+set tags=tags;/
+" let tags="./tags,tags"
 
 " INVISIBLE CHARACTER COLORS {{{1
 highlight NonText guifg=#4a4a59

@@ -29,9 +29,11 @@ Plug 'tpope/vim-repeat'
 
 
 Plug 'scrooloose/nerdtree'
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 
+"" Ctags
+Plug 'taglist.vim'
 
 " Text object
 "
