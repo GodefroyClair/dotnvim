@@ -68,6 +68,9 @@ Plug 'htacg/tidy-html5'
 
 "Javascript js
 Plug  'pangloss/vim-javascript'
+" Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'burnettk/vim-angular'
+Plug 'othree/javascript-libraries-syntax.vim'
 
 "PHP :
 Plug 'Shougo/vimproc'
@@ -82,6 +85,13 @@ Plug 'plasticboy/vim-markdown'
 
 "C
 Plug 'critiqjo/lldb.nvim'
+
+
+ " Plug
+Plug 'Shougo/deoplete.nvim'
+Plug 'mhartington/deoplete-typescript'
+
+
 
 " all of your plugins must be added before 
 call plug#end()            " required

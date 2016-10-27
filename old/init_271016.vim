@@ -214,64 +214,64 @@ nmap <leader>; <Plug>RDSendLine
 "------------------------------------
 
 "
-" MAP {{{1
-"Command mode shortcut
-cmap Sw w ! sudo tee %  > /dev/null
-"
-"
-"edit your init.vim & plugInit.vim quickly
-let $MYVIMPLUG=fnamemodify($MYVIMRC, ':p:h'). '/plugInit.vim'
-" let $MYVIMPLUG=system('dirname $MYVIMRC') . "plugInit.vim"
-" let $MYVIMPLUG .= "/plugInit.vim"
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>ep :vsplit $MYVIMPLUG<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" create var for vimplug file
+"" MAP {{{1
+""Command mode shortcut
+"cmap Sw w ! sudo tee %  > /dev/null
+""
+""
+""edit your init.vim & plugInit.vim quickly
+"let $MYVIMPLUG=fnamemodify($MYVIMRC, ':p:h'). '/plugInit.vim'
+"" let $MYVIMPLUG=system('dirname $MYVIMRC') . "plugInit.vim"
+"" let $MYVIMPLUG .= "/plugInit.vim"
+"nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"nnoremap <leader>ep :vsplit $MYVIMPLUG<cr>
+"nnoremap <leader>sv :source $MYVIMRC<cr>
+"" create var for vimplug file
 
-" expand($MYVIMRC:h)/plugInit.vim
+"" expand($MYVIMRC:h)/plugInit.vim
 
-"" Nuke Arrow Keys
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
+""" Nuke Arrow Keys
+""nnoremap <up> <nop>
+""nnoremap <down> <nop>
+""nnoremap <left> <nop>
 "nnoremap <right> <nop>
 "
 
-""nvim terminal emulation window commands
-tnoremap <Esc> <C-\><C-n>
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+"""nvim terminal emulation window commands
+"tnoremap <Esc> <C-\><C-n>
+"tnoremap <A-h> <C-\><C-n><C-w>h
+"tnoremap <A-j> <C-\><C-n><C-w>j
+"tnoremap <A-k> <C-\><C-n><C-w>k
+"tnoremap <A-l> <C-\><C-n><C-w>l
+"nnoremap <A-h> <C-w>h
+"nnoremap <A-j> <C-w>j
+"nnoremap <A-k> <C-w>k
+"nnoremap <A-l> <C-w>l
 
-" CTAGS {{{1
-"ctags config
+"" CTAGS {{{1
+""ctags config
 
-set tags=tags;/
-" let tags="./tags,tags"
+"set tags=tags;/
+"" let tags="./tags,tags"
 
-" INVISIBLE CHARACTER COLORS {{{1
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
+"" INVISIBLE CHARACTER COLORS {{{1
+""highlight NonText guifg=#4a4a59
+""highlight SpecialKey guifg=#4a4a59
 
 
 
-" function! FormatprgLocal(filter)
-"     if !empty(v:char)
-"         return 1
-"     else
-"         let l:command = v:lnum.','.(v:lnum+v:count-1).'!'.a:filter
-"         echo l:command
-"         execute l:command
-"     endif
-" endfunction
+"" function! FormatprgLocal(filter)
+""     if !empty(v:char)
+""         return 1
+""     else
+""         let l:command = v:lnum.','.(v:lnum+v:count-1).'!'.a:filter
+""         echo l:command
+""         execute l:command
+""     endif
+"" endfunction
 
-" if has("autocmd")
-"     let pandoc_pipeline  = "pandoc --from=html --to=html"
-"     autocmd FileType html setlocal formatexpr=FormatprgLocal(pandoc_pipeline)
-" endif
-"
+"" if has("autocmd")
+""     let pandoc_pipeline  = "pandoc --from=html --to=html"
+""     autocmd FileType html setlocal formatexpr=FormatprgLocal(pandoc_pipeline)
+"" endif
+""
