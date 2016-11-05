@@ -28,61 +28,7 @@ hi MatchParen ctermbg=yellow "color of matching pairs
 let mapleader="\<SPACE>"
 
 
-" BASIC OPTIONS {{{1
-"
-"
-set nohlsearch
-:if !has('nvim')
-:set encoding=utf-8
-:endif
-set modelines=0
-set autoindent "?? pb avec <ctrl v> ??
-set showmode
-set showcmd
-" set hidden
-set visualbell
-"set ttyfast // not used with neovim ?
-set ruler
-set backspace=indent,eol,start "treat bckspc pb at strt of ln & in indent
-set number
-set norelativenumber
-" set laststatus=2
-set history=1000
-" set undofile ??
-set undoreload=10000
-set list
-"show invisible char
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-" set shell=/bin/bash\ --login //break terminal command in neovim
-set lazyredraw
-set showbreak=↪
-" set splitbelow
-" set splitright
-" set fillchars=diff:⣿,vert:│
-" set autowrite
-" set autoread
-" set shiftround
-set title
-" set linebreak
-set dictionary=/usr/share/dict/words
-" set spellfile=~/.vim/custom-dictionary.utf-8.add
-set colorcolumn=+1
-
-set expandtab "don't use actual tab character
-set softtabstop=4 "indenting is 4 spaces
-let &shiftwidth = &softtabstop "shift is the same as softtabstop
-let &tabstop  =  &softtabstop
-
-"the matchit plugin of nvim uses better command to improve over the vim
-"matchit
-"the matchpairs still works but is improved with the match_words variable
-"set matchpairs+=<:>,":" "add pair symbols to the % tool (which find the matching pair)
-let b:match_words = '<:>,<.{-}>:</.\{-}>,if:endif'
-let b:match_ignorecase = 0
-set showmatch
-set matchtime=3
-
-
+q
 
 "PLUGINS TUNING {{{1
 
@@ -97,6 +43,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" use jshint
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -131,7 +79,7 @@ let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
 "file where the snippets are looked for 
 let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips','UltiSnips',"~/.config/nvim/CustomSnips" ]
 
-
+a
 "NERD TREE {{{2
 "let g:nerdtree_tabs_open_on_console_startup=1
 
@@ -182,9 +130,9 @@ if has("autocmd")
 
     "auto-completion (au shortcut for autocmd)    
     autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
+    au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
     autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
-    au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
     "autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
     "open nerdtree & put cursor into file to edit
     autocmd vimenter * NERDTree | wincmd p
@@ -196,6 +144,10 @@ endif "end autocmd condition
 
     "R related
     autocmd filetype R set path+=~/githubRepos/general-functions
+
+    "Markdown related
+    " autocmd filetype Markdown 
+    map gl <Plug>Markdown_EditUrlUnderCursor
 
 
 "------------------------------------

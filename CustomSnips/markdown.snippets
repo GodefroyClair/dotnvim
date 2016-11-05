@@ -1,0 +1,47 @@
+priority -150
+
+###########################
+# My Markdown snippet     #
+###########################
+
+snippet markdeep
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+endsnippet
+
+snippet head
+---
+title: $2 
+author: Godefroy Clair
+toc: true
+toc-title: sommaire
+css: https://casual-effects.com/markdeep/latest/markdeep.min.js
+date : ${3:`date +"%a %d %b %Y"`}
+output:
+  pdf_document:
+    fig_crop: no
+    keep_tex: yes
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
+  html_document:
+    css: ./style/base-style.css
+    css: https://casual-effects.com/markdeep/latest/markdeep.min.js
+    number_sections: yes
+    toc: yes
+subtitle: "Some small notes and synthesis on different topics related with physics, flight technique, etc."
+
+---
+---
+format: pdf
+title:  
+author: Godefroy Clair
+toc: true
+toc-title: sommaire
+---
+
+\newpage
+
+**Objet** : $4 
+endsnippet
+
+# vim:ft=snippets:
