@@ -1,18 +1,18 @@
 " .vim.vimrc
 " " Author: Godefroy Clair
-" " Source: 
+" " Source:
 " "
 """""""""""""""""""""""""""""""
 """""""INTERNAL-VARIABLE"""""""
 """""""""""""""""""""""""""""""
-"                (nothing)  In a function: local to a function; otherwise: global 
-" buffer-variable    b:     Local to the current buffer.                          
-" window-variable    w:     Local to the current window.                          
-" tabpage-variable   t:     Local to the current tab page.                        
-" global-variable    g:     Global.                                               
-" local-variable     l:     Local to a function.                                  
-" script-variable    s:     Local to a :source'ed Vim script.                     
-" function-argument  a:     Function argument (only inside a function).           
+"                (nothing)  In a function: local to a function; otherwise: global
+" buffer-variable    b:     Local to the current buffer.
+" window-variable    w:     Local to the current window.
+" tabpage-variable   t:     Local to the current tab page.
+" global-variable    g:     Global.
+" local-variable     l:     Local to a function.
+" script-variable    s:     Local to a :source'ed Vim script.
+" function-argument  a:     Function argument (only inside a function).
 " vim-variable       v:     Global, predefined by Vim.
 " "
 " "
@@ -27,15 +27,35 @@ hi MatchParen ctermbg=yellow "color of matching pairs
 "map the leader key
 let mapleader="\<SPACE>"
 
+set nu
+let g:airline_theme='luna'
 
-q
+set updatetime=250
 
 "PLUGINS TUNING {{{1
 
 "DEOPLETE
 "
 "" Enable deoplete at startup
+
+" vim-plug
+set runtimepath+=~/.config/nvim/plugged/deoplete.nvim
+set completeopt+=noinsert,noselect
+set completeopt-=preview
+
+" hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
+" hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
+
 let g:deoplete#enable_at_startup = 1
+
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+filetype plugin indent on
+
+"NERDTreeTabs : run on console vim startup
+let g:nerdtree_tabs_open_on_console_startup=1
 
 "SYNTASTIC {{{2
 
@@ -50,7 +70,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " let g:syntastic_quiet_messages = { "type": "style" }
-" let g:syntastic_php_phpcs_quiet_messages = { 
+" let g:syntastic_php_phpcs_quiet_messages = {
 "     \ 'regex': [
 "     \ 'Short PHP opening tag used with echo',
 "     \ 'Missing file doc comment',
@@ -60,26 +80,27 @@ let g:syntastic_check_on_wq = 1
 "     \ ] }
 
 "YOUCOMPLETEME {{{2
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_use_ultisnips_completer = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_use_ultisnips_completer = 1
 "disable the use of tabs and shift tabs forjYCM - use <C-N> & <C-P> instead
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-let g:ycm_confirm_extra_conf=0
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
+" let g:ycm_confirm_extra_conf=0
 
 "UTLISNIPS {{{2
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"
-" files to store snippets, where UltiSnipEdit is seeking when writing a new file
-let g:UltiSnipsSnippetsDir="~/.config/nvim/CustomSnips" 
-let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips" 
-"file where the snippets are looked for 
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips','UltiSnips',"~/.config/nvim/CustomSnips" ]
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-a
+" files to store snippets, where UltiSnipEdit is seeking when writing a new file
+let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
+" let g:UltiSnipsSnippetsDir="~/.config/nvim/CustomSnips"
+"file where the snippets are looked for
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
+
 "NERD TREE {{{2
 "let g:nerdtree_tabs_open_on_console_startup=1
 
@@ -128,11 +149,13 @@ if has("autocmd")
     "BufEnter is triggered after you enter a buffer for editing.
     "use BufNew, BufRead or BufAdd for things at creation of buffer
 
-    "auto-completion (au shortcut for autocmd)    
+    "auto-completion (au shortcut for autocmd)
     autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
     au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
     autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
     autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
+    autocmd filetype vim set spelllang=en_us
+    autocmd filetype md set spelllang=fr_FR
     "autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
     "open nerdtree & put cursor into file to edit
     autocmd vimenter * NERDTree | wincmd p
@@ -146,7 +169,7 @@ endif "end autocmd condition
     autocmd filetype R set path+=~/githubRepos/general-functions
 
     "Markdown related
-    " autocmd filetype Markdown 
+    " autocmd filetype Markdown
     map gl <Plug>Markdown_EditUrlUnderCursor
 
 
@@ -166,7 +189,7 @@ nmap <leader>; <Plug>RDSendLine
 "------------------------------------
 
 "
-" MAP {{{1
+" MAP & GLOBAL{{{1
 "Command mode shortcut
 cmap Sw w ! sudo tee %  > /dev/null
 "
@@ -200,6 +223,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+"dictionary
+imap <Leader>s <C-o>:setlocal spell! spelllang=en_us<CR>
+nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
+
 " CTAGS {{{1
 "ctags config
 
@@ -210,7 +237,8 @@ set tags=tags;/
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-
+"Windows settings
+command Termb bot 5split | term
 
 " function! FormatprgLocal(filter)
 "     if !empty(v:char)

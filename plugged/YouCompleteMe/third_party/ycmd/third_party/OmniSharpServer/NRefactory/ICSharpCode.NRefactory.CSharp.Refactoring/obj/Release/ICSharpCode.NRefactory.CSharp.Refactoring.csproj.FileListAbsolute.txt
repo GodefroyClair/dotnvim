@@ -1,0 +1,4 @@
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/bin/Release/ICSharpCode.NRefactory.CSharp.Refactoring.xml
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/bin/Release/ICSharpCode.NRefactory.CSharp.Refactoring.dll
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.CSharp.Refactoring/obj/Release/ICSharpCode.NRefactory.CSharp.Refactoring.csprojResolveAssemblyReference.cache
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.CSharp.Refactoring/obj/Release/ICSharpCode.NRefactory.CSharp.Refactoring.dll

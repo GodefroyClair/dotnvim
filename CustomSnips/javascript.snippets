@@ -9,3 +9,11 @@ endsnippet
 snippet hello
 test ok!
 endsnippet
+
+snippet d3
+d3.select('$1')
+  .selectAll('$2')
+  .data($3, function(d) {
+    return d? d.name : this.innerText;
+});
+end snippet

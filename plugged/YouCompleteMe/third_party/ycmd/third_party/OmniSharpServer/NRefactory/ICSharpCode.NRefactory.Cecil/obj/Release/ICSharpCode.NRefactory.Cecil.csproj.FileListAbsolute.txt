@@ -1,0 +1,9 @@
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/ICSharpCode.NRefactory.Cecil.dll
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/ICSharpCode.NRefactory.Cecil.dll.mdb
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/ICSharpCode.NRefactory.dll
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/Mono.Cecil.dll
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/ICSharpCode.NRefactory.xml
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/bin/Release/Mono.Cecil.dll.mdb
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/obj/Release/ICSharpCode.NRefactory.Cecil.csprojResolveAssemblyReference.cache
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/obj/Release/ICSharpCode.NRefactory.Cecil.dll
+/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/NRefactory/ICSharpCode.NRefactory.Cecil/obj/Release/ICSharpCode.NRefactory.Cecil.dll.mdb

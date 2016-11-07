@@ -27,13 +27,25 @@ Plug 'tpope/vim-ragtag'
 "Repeat.vim remaps . in a way that plugins can tap into it.
 Plug 'tpope/vim-repeat'
 
+"unite : replacer by denit
+"Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
+
+"status bar 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/nerdtree'
+"work with nerdtree
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'scrooloose/syntastic'
 Plug 'neomake/neomake'
 
 "" Ctags
 Plug 'taglist.vim'
+
+" Git
+Plug 'airblade/vim-gitgutter'
 
 " Text object
 "
@@ -51,8 +63,11 @@ Plug 'kana/vim-textobj-syntax'
 Plug 'vim-scripts/phpfolding.vim'
 
 Plug 'jistr/vim-nerdtree-tabs'
-"
-Plug 'Valloric/YouCompleteMe'
+
+"keyword completion
+"Plug 'Valloric/YouCompleteMe'
+"Async keyword completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " SNIPPETS : Track the engine.
 Plug 'SirVer/ultisnips'
@@ -68,13 +83,12 @@ Plug 'htacg/tidy-html5'
 
 "Javascript js
 Plug  'pangloss/vim-javascript'
-" Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'burnettk/vim-angular'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 "PHP :
 Plug 'Shougo/vimproc'
-Plug 'Shougo/unite.vim'
 Plug 'm2mdas/phpcomplete-extended'
 
 "R
@@ -86,12 +100,12 @@ Plug 'plasticboy/vim-markdown'
 "C
 Plug 'critiqjo/lldb.nvim'
 
-
- " Plug
-Plug 'Shougo/deoplete.nvim'
+" Typescript
 Plug 'mhartington/deoplete-typescript'
+Plug 'leafgarland/typescript-vim'
 
-
+" CSV
+Plug 'chrisbra/csv.vim'
 
 " all of your plugins must be added before 
 call plug#end()            " required
