@@ -1,0 +1,66 @@
+priority -150
+
+###########################
+# My Markdown snippet     #
+###########################
+
+snippet  test
+	ok
+
+snippet markdeep
+	<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+snippet head
+	---
+	title: ${2} 
+	author: Godefroy Clair
+	toc: true
+	toc-title: sommaire
+	css: https://casual-effects.com/markdeep/latest/markdeep.min.js
+	date : ${3:date}
+    	fig_crop: no
+	latex_engine: xelatex
+	number_sections: yes
+	css: ./style/base-style.css
+	inlude-after: 
+	    	- <!-- Markdeep: -->
+		- <style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+		- <script src="markdeep.min.js"></script>
+		- <script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+		- <script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+	subtitle: "$4"
+	---
+	\newpage
+	**Objet** : $5 
+
+snippet head2
+	---
+	title: ${2} 
+	author: Godefroy Clair
+	toc: true
+	toc-title: sommaire
+	css: https://casual-effects.com/markdeep/latest/markdeep.min.js
+	date : ${3:date}
+	output:
+	  pdf_document:
+	    fig_crop: no
+	    keep_tex: yes
+	    latex_engine: xelatex
+	    number_sections: yes
+	    toc: yes
+	  html_document:
+	    css: ./style/base-style.css
+	    footer: 
+	    	<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+	    number_sections: yes
+	    toc: yes
+	subtitle: "$4"
+	---
+	\newpage
+	**Objet** : $5 
+
+snippet picture
+abbr ![<alt>](../images/<pic>)
+
+
+# vim:ft=snippets

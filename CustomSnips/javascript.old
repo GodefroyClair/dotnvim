@@ -3,12 +3,16 @@ priority -50
 #                            my TextMate Snippets                            #
 ###########################################################################
 
+snippet test
+options head
+        hello textMate
+
+
 snippet global
 /*global $1*/
-endsnippet
+
 snippet hello
 test ok!
-endsnippet
 
 snippet d3
 d3.select('$1')
@@ -16,4 +20,3 @@ d3.select('$1')
   .data($3, function(d) {
     return d? d.name : this.innerText;
 });
-end snippet

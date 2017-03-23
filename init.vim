@@ -19,13 +19,15 @@
 source ~/.config/nvim/plugInit.vim
 
 syntax on
+nnoremap <CR> :nohlsearch<CR><CR>
+
 
 "set window style
 hi Normal ctermfg=lightgrey ctermbg=darkblue "hi = highlight
 hi MatchParen ctermbg=yellow "color of matching pairs
 
 "map the leader key
-let mapleader="\<SPACE>"
+let mapleader=","
 
 set nu
 let g:airline_theme='luna'
@@ -37,16 +39,17 @@ set updatetime=250
 "DEOPLETE
 "
 "" Enable deoplete at startup
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#tss#javascript_support = 1
 
 " vim-plug
 set runtimepath+=~/.config/nvim/plugged/deoplete.nvim
 set completeopt+=noinsert,noselect
 set completeopt-=preview
 
-" hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
-" hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
+hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
+hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
 
-let g:deoplete#enable_at_startup = 1
 
 " Use deoplete.
 let g:tern_request_timeout = 1
@@ -59,16 +62,16 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 "SYNTASTIC {{{2
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 " use jshint
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
 " let g:syntastic_quiet_messages = { "type": "style" }
 " let g:syntastic_php_phpcs_quiet_messages = {
 "     \ 'regex': [
@@ -79,7 +82,34 @@ let g:syntastic_check_on_wq = 1
 "     \ 'Opening brace of a class must be on the line'
 "     \ ] }
 
+"NEOSNIPPETS {{{2
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+\ pumvisible() ? "\<C-n>" :
+\ neosnippet#expandable_or_jumpable() ?
+\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+" let g:neosnippet#snippets_directory='~/.config/nvim/CustomSnips'
+let g:neosnippet#snippets_directory='~/.config/nvim/plugged/neosnippet-snippets/neosnippet, ~/.config/nvim/plugged/angular-vim-snippets/snippets, ~/.config/nvim/CustomSnips'
+
+
+"Edit snippet file in vertical split
+command! NeoSnipEditV NeoSnippetEdit -split -vertical
+
 "YOUCOMPLETEME {{{2
+
 " let g:ycm_autoclose_preview_window_after_completion = 1
 " let g:ycm_autoclose_preview_window_after_insertion = 1
 " let g:ycm_use_ultisnips_completer = 1
@@ -89,20 +119,32 @@ let g:syntastic_check_on_wq = 1
 " let g:ycm_confirm_extra_conf=0
 
 "UTLISNIPS {{{2
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " files to store snippets, where UltiSnipEdit is seeking when writing a new file
-let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
+" let g:UltiSnipsEditSplit='horizontal'
+"let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
 " let g:UltiSnipsSnippetsDir="~/.config/nvim/CustomSnips"
 "file where the snippets are looked for
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
+" let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
 
-"NERD TREE {{{2
+"NERD TREE {{{
 "let g:nerdtree_tabs_open_on_console_startup=1
+
+"NEOMAKE {{{
+
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+let g:neomake_javascript_enabled_makers = ['jshint']
+
+autocmd! BufWritePost * Neomake
+
 
 "LLDB {{{2
 
@@ -116,12 +158,15 @@ nnoremap <S-F8> :LL process interrupt<CR>
 nnoremap <F9> :LL print <C-R>=expand('<cword>')<CR>
 vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
-"Others {{{2
+"PHP {{{2
 "autocmd filetype php let g:php_folding=2
 let g:DisableAutoPHPFolding = 1
-"vim-javascript
+
+"javascript {{{2
 let g:javascript_enable_domhtmlcss = 1
 
+" Markdown {{{2
+let g:vim_markdown_folding_disabled = 1
 " FOLDING {{{1
 
 set foldlevelstart=0
@@ -238,7 +283,7 @@ highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
 "Windows settings
-command Termb bot 5split | term
+command! Termb bot 5split | term
 
 " function! FormatprgLocal(filter)
 "     if !empty(v:char)

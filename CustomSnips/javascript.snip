@@ -1,0 +1,38 @@
+priority -50
+###########################################################################
+#                            my TextMate Snippets                         #
+###########################################################################
+
+snippet test2
+   hello-js
+
+snippet d3select
+
+abbr d3s
+        d3.select('${1}')
+          .selectAll('${2}')
+          .data(${3:data}, function(d) {
+              return d? d.name : this.innerText;
+        });
+
+snippet     testdate
+        options 
+    `strftime("%d %b %Y")`
+
+snippet nodeConf
+        // jshint esversion: 6
+        /* jshint strict: true */
+        /* jshint node: true */
+        "use strict";
+
+
+snippet node
+        /* jshint node: true */
+
+snippet v6
+        // jshint esversion: 6
+
+snippet strict
+        /* jshint node: true */
+        "use strict";
+

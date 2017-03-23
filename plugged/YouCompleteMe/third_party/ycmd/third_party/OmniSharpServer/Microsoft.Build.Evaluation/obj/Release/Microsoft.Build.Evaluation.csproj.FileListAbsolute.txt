@@ -1,6 +1,0 @@
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/bin/Release/Microsoft.Build.Evaluation.dll
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/bin/Release/Microsoft.Build.Evaluation.dll.mdb
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/bin/Release/System.IO.Abstractions.dll
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/obj/Release/Microsoft.Build.Evaluation.csprojResolveAssemblyReference.cache
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/obj/Release/Microsoft.Build.Evaluation.dll
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/Microsoft.Build.Evaluation/obj/Release/Microsoft.Build.Evaluation.dll.mdb

@@ -1,4 +1,0 @@
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/cecil/bin/net_4_0_Release/Mono.Cecil.dll
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/cecil/bin/net_4_0_Release/Mono.Cecil.dll.mdb
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/cecil/obj/net_4_0_Release/Mono.Cecil.dll
-/Users/godot/.config/nvim/plugged/YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer/cecil/obj/net_4_0_Release/Mono.Cecil.dll.mdb
