@@ -41,6 +41,20 @@ Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'scrooloose/syntastic'
 " Plug 'Shougo/neocomplete'
 Plug 'neomake/neomake'
+" {{{
+    " neomake is async => it doesn't block the editor
+    " It's a syntastic alternative. Syntastic was slow for me on python files.
+    " $ sudo pip2/pip3 install flake8 -U
+    " $ sudo pip2/pip3 install vulture -U
+    let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
+    " let g:neomake_python_enabled_makers = ['flake8', 'pep8']
+    " E501 is line length of 80 characters
+    let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
+    let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+ 
+    " run neomake on the current file on every write:
+    autocmd! BufWritePost * Neomake
+    " }}}
 
 "" Ctags
 Plug 'taglist.vim'
@@ -64,6 +78,7 @@ Plug 'Shougo/neosnippet-snippets'
 " Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'matthewsimo/angular-vim-snippets'
+Plug 'justinj/vim-react-snippets'
 
 " Text object {{{2
 "
@@ -86,7 +101,6 @@ Plug 'vim-scripts/phpfolding.vim'
 "Python
 Plug 'zchee/deoplete-jedi'
 
-
 "HTML
 "html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
 Plug 'othree/html5.vim'
@@ -100,6 +114,7 @@ Plug 'moll/vim-node', { 'for': 'javascript' } " node support
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+"Jsx
 Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript'] } " JSX support
 
 "PHP :

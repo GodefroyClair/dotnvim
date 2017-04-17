@@ -1,7 +1,10 @@
-" .vim.vimrc
+" nvim/init.vim
 " " Author: Godefroy Clair
 " " Source:
 " "
+"""" DEBUG ""
+" let w:airline_disabled=1
+
 """""""""""""""""""""""""""""""
 """""""INTERNAL-VARIABLE"""""""
 """""""""""""""""""""""""""""""
@@ -41,19 +44,32 @@ set updatetime=250
 "" Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#tss#javascript_support = 1
+let g:deoplete#sources#jedi#statement_length=30
+let g:deoplete#sources#jedi#enable_cachem=1
+" let g:deoplete#sources#jedi#show_docstring=0
+" let g:deoplete#sources#jedi#python_path
+" let g:deoplete#sources#jedi#debug_server
+
 
 " vim-plug
 set runtimepath+=~/.config/nvim/plugged/deoplete.nvim
-set completeopt+=noinsert,noselect
-set completeopt-=preview
+" set completeopt+=noinsert,noselect
+" set completeopt-=preview
+
+
+
+" deoplete-tern
+let g:tern_request_timeout = 1
+" let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+"Add extra filetypes
+let g:tern#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ ]
 
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
-
-
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 
 filetype plugin indent on
 
@@ -66,8 +82,11 @@ let g:nerdtree_tabs_open_on_console_startup=1
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
+" use eslint
+" let g:syntastic_javascript_checkers = ['eslint']
 " use jshint
 " let g:syntastic_javascript_checkers = ['jshint']
+
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
@@ -137,11 +156,14 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 
 "NEOMAKE {{{
 
-let g:neomake_javascript_jshint_maker = {
-    \ 'args': ['--verbose'],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-    \ }
-let g:neomake_javascript_enabled_makers = ['jshint']
+" let g:neomake_javascript_jshint_maker = {
+"     \ 'args': ['--verbose'],
+"     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+"     \ }
+" let g:neomake_javascript_enabled_makers = ['jshint']
+let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_verbose=0
+" let g:neomake_open_list = 0
 
 autocmd! BufWritePost * Neomake
 
@@ -164,6 +186,8 @@ let g:DisableAutoPHPFolding = 1
 
 "javascript {{{2
 let g:javascript_enable_domhtmlcss = 1
+"jsx
+let g:jsx_ext_required = 0 
 
 " Markdown {{{2
 let g:vim_markdown_folding_disabled = 1
