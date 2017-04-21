@@ -36,6 +36,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'albfan/nerdtree-git-plugin', {'on': 'NERDTreeToggle'}
 "work with nerdtree
 Plug 'jistr/vim-nerdtree-tabs'
 "Plug 'scrooloose/syntastic'
@@ -75,7 +77,7 @@ Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 " Snippets are separated from the engine. Add this if you want them:
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'matthewsimo/angular-vim-snippets'
 Plug 'justinj/vim-react-snippets'
@@ -95,16 +97,18 @@ Plug 'kana/vim-textobj-syntax'
 " automatic closing of quotes, parenthesis, brackets, etc.
 Plug 'Raimondi/delimitMate'
 
+
+""""""" LANGUAGES """"""""""
+
 "PHP
 Plug 'vim-scripts/phpfolding.vim'
 
 "Python
 Plug 'zchee/deoplete-jedi'
-
-"HTML
-"html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
-Plug 'othree/html5.vim'
-Plug 'htacg/tidy-html5'
+Plug 'hkupty/iron.nvim'
+" to test :
+" Plug 'hynek/vim-python-pep8-indent', {'for': ['python', 'python3']}
+" Plug 'bps/vim-textobj-python', {'for': ['python', 'python3']}
 
 "Javascript js
 Plug  'pangloss/vim-javascript'
@@ -114,21 +118,9 @@ Plug 'moll/vim-node', { 'for': 'javascript' } " node support
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
+
 "Jsx
 Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript'] } " JSX support
-
-"PHP :
-Plug 'Shougo/vimproc'
-Plug 'm2mdas/phpcomplete-extended'
-
-"R
-Plug 'jalvesaq/Nvim-R'
-
-"Markdown
-Plug 'plasticboy/vim-markdown'
-
-"C
-Plug 'critiqjo/lldb.nvim'
 
 " Typescript
 Plug 'mhartington/deoplete-typescript'
@@ -139,9 +131,35 @@ Plug 'clausreinke/typescript-tools.vim', { 'for': 'typescript' }
 " typescript support
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' } 
 
+
+"PHP :
+Plug 'Shougo/vimproc', {'do': 'make'}
+Plug 'm2mdas/phpcomplete-extended'
+
+"R
+Plug 'jalvesaq/Nvim-R'
+
+"C
+Plug 'critiqjo/lldb.nvim'
+
+"C++
+Plug 'Rip-Rip/clang_complete', {'for': ['c', 'cpp']}
+
+"HTML
+"html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
+Plug 'othree/html5.vim'
+Plug 'htacg/tidy-html5'
+
+
+
+"" File format
+" Json
+Plug 'elzr/vim-json', {'for': 'json'}
 " CSV
-Plug 'chrisbra/csv.vim'
+Plug 'chrisbra/csv.vim', {'for': 'csv'}
+"Markdown
+Plug 'plasticboy/vim-markdown'
+
 
 " all of your plugins must be added before 
 call plug#end()            " required
-
