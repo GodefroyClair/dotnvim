@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/godot/javascript/NodeLiveLessons/Lesson09/photo_sharing_mysql/static'
+let g:netrw_dirhist_2='/Users/godot/javascript/NodeLiveLessons/Lesson09/photo_sharing_mysql/static/content'
+let g:netrw_dirhist_3='/Users/godot/javascript/NodeLiveLessons/Lesson09/photo_sharing_mysql/static'
+let g:netrw_dirhist_4='/Users/godot/flylab/ipsum/cuvees/app'
+let g:netrw_dirhist_5='/Users/godot/flylab/ipsum/backend/cuvees'
+let g:netrw_dirhist_6='/Users/godot/javascript/NodeLiveLessons/Lesson10/photo_sharing_mysql/static'
+let g:netrw_dirhist_7='/Users/godot/javascript/NodeLiveLessons/Lesson10/photo_sharing_mysql'
+let g:netrw_dirhist_8='/Users/godot/javascript/NodeLiveLessons/Lesson10/photo_sharing_mysql/static'

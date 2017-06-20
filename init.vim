@@ -29,6 +29,8 @@ nnoremap <CR> :nohlsearch<CR><CR>
 hi Normal ctermfg=lightgrey ctermbg=darkblue "hi = highlight
 hi MatchParen ctermbg=yellow "color of matching pairs
 
+set splitbelow
+
 "map the leader key
 let mapleader=","
 
@@ -36,6 +38,11 @@ set nu
 let g:airline_theme='luna'
 
 set updatetime=250
+
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 "PLUGINS TUNING {{{1
 
@@ -167,6 +174,11 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 
 autocmd! BufWritePost * Neomake
 
+
+" C C++ {{{2
+
+let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+'
 
 "LLDB {{{2
 
