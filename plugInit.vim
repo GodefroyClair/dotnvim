@@ -84,6 +84,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'matthewsimo/angular-vim-snippets'
 Plug 'justinj/vim-react-snippets'
+Plug 'bentayloruk/vim-react-es6-snippets'
 
 " Text object {{{2
 "
@@ -112,11 +113,16 @@ Plug 'hkupty/iron.nvim'
 " Plug 'bps/vim-textobj-python', {'for': ['python', 'python3']}
 
 " Javascript js
+" Plug 'vimlab/neojs'
+Plug 'neovim/node-host'
+Plug 'mklabs/mdn.vim'
 Plug  'pangloss/vim-javascript'
+Plug 'mklabs/jscs.vim', { 'do': 'npm i jscs -g' }
 Plug 'burnettk/vim-angular'
 Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' } " JavaScript indent support
 Plug 'moll/vim-node', { 'for': 'javascript' } " node support
 Plug 'othree/javascript-libraries-syntax.vim'
+" NOTE: yajs.vim is not good on performance with vim
 Plug 'othree/yajs.vim', { 'for': 'javascript' } " JavaScript syntax plugin
 Plug 'othree/es.next.syntax.vim', { 'for': 'javascript' } " ES6 and beyond syntax
 
