@@ -5,7 +5,7 @@ call minpac#init()
 " Git
 call minpac#add('airblade/vim-gitgutter')
 " Git wrapper 
-call minpac#add("tpope/fugitive")
+call minpac#add("tpope/vim-fugitive")
 " put commentary with the gc operator
 call minpac#add("tpope/vim-commentary")
 " cs : provides mappings to del, chg, add surroundings in pairs.
@@ -54,7 +54,7 @@ call minpac#add('Raimondi/delimitMate')
 
 " plugin for Neovim/Vim to unite all interfaces
 " replace unite
-call minpac#add("Shougo/denite")
+call minpac#add("Shougo/denite.nvim")
 
 " Nerdtree {{{1
 call minpac#add("scrooloose/nerdtree")
@@ -131,7 +131,6 @@ call minpac#add('clausreinke/typescript-tools.vim', { 'for': 'typescript' })
 " typescript support
 call minpac#add('leafgarland/typescript-vim', { 'for': 'typescript' })
 
-
 " PHP :
 call minpac#add('Shougo/vimproc', {'do': 'make'})
 call minpac#add('m2mdas/phpcomplete-extended')
@@ -141,7 +140,8 @@ call minpac#add('vim-scripts/phpfolding.vim')
 call minpac#add('jalvesaq/Nvim-R')
 
 " C
-call minpac#add('critiqjo/lldb.nvim', {'for': ['c', 'cpp']})
+" call minpac#add('dbgx/lldb.nvim')
+" call minpac#add('critiqjo/lldb.nvim')
 
 " C++
 call minpac#add('Rip-Rip/clang_complete', {'for': ['c', 'cpp']})
