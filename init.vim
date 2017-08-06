@@ -1,8 +1,10 @@
 " nvim/init.vim
 " " Author: Godefroy Clair
-" " Source: Neil Drew, tim pope...
-" "
-"""" DEBUG ""
+" " Source: Neil Drew, Tim Pope...
+
+
+
+"""" DEBUG & MEMO {{{1
 " let w:airline_disabled=1
 
 """""""""""""""""""""""""""""""
@@ -17,13 +19,16 @@
 " script-variable    s:     Local to a :source'ed Vim script.
 " function-argument  a:     Function argument (only inside a function).
 " vim-variable       v:     Global, predefined by Vim.
-" "
-" "
-source ~/.config/nvim/plugInit.vim
+
+
+" LAUNCH PLUGIN PATH {{{1
+" source ~/.config/nvim/plugInit.vim
 source ~/.config/nvim/minpacPlug.vim
+runtime macros/matchit.vim
 
 " GEN CONFIG OF NVIM {{{1
 
+" Set general behavior (window, sounds...) {{{2
 "map the "leader" key
 let mapleader=","
 set modelines=5 " nb lines (beg + end) vim checks for initializations
@@ -34,7 +39,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set display+=lastline " as much as poss last line will be displayed. (otherwise replaced with "@" lines)
-
 
 " Set aestethics (window, sounds...) {{{2
 
@@ -49,13 +53,17 @@ nnoremap <CR> :nohlsearch<CR><CR> " rm search highlight
 " Window settings (split and moves)
 set splitbelow
 set vb t_vb= " no beep or flash is wanted,
+set mouse=a
 " nvim terminal emulation window commands
-command! Termb bot 5split | term " create special terminal window
-tnoremap <Esc> <C-\><C-n>
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <A-[> <Esc>
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+    command! Termb bot 5split | term " create special terminal window
+endif
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -202,10 +210,10 @@ let g:tern_request_timeout = 1
 " let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 "Add extra filetypes
 let g:tern#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ ]
+      \ 'jsx',
+      \ 'javascript.jsx',
+      \ 'vue',
+      \ ]
 
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
@@ -297,10 +305,10 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 "file where the snippets are looked for
 " let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
 
-"NERD TREE {{{
+"NERD TREE {{{2
 "let g:nerdtree_tabs_open_on_console_startup=1
 
-"NEOMAKE {{{
+"NEOMAKE {{{2
 
 " let g:neomake_javascript_jshint_maker = {
 "     \ 'args': ['--verbose'],
@@ -311,6 +319,17 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 " let g:neomake_verbose=0
 " let g:neomake_open_list = 0
 
+" neomake is async => it doesn't block the editor
+" It's a syntastic alternative. Syntastic was slow for me on python files.
+" $ sudo pip2/pip3 install flake8 -U
+" $ sudo pip2/pip3 install vulture -U
+let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
+" let g:neomake_python_enabled_makers = ['flake8', 'pep8']
+" E501 is line length of 80 characters
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+
+" run neomake on the current file on every write:
 autocmd! BufWritePost * Neomake
 
 
