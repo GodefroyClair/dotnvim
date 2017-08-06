@@ -9,6 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " General enhancements
 "
+" Plug 'johngrib/vim-game-code-break'
 "" git wrapper 
 Plug 'tpope/vim-fugitive'
 " put commentary with the gc operator
@@ -26,6 +27,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-ragtag'
 " Repeat.vim remaps . in a way that plugins can tap into it.
 Plug 'tpope/vim-repeat'
+" CamelCase and underscore_notation
+Plug 'bkad/CamelCaseMotion'
 
 " Terminal
 Plug 'mklabs/split-term.vim'
@@ -62,7 +65,8 @@ Plug 'neomake/neomake'
     " }}}
 
 "" Ctags
-Plug 'taglist.vim'
+" Plug 'taglist.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -148,7 +152,7 @@ Plug 'vim-scripts/phpfolding.vim'
 Plug 'jalvesaq/Nvim-R'
 
 " C
-Plug 'critiqjo/lldb.nvim'
+Plug 'critiqjo/lldb.nvim', {'for': ['c', 'cpp']}
 
 " C++
 Plug 'Rip-Rip/clang_complete', {'for': ['c', 'cpp']}
