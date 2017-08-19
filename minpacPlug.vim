@@ -30,6 +30,7 @@ call minpac#add("machakann/vim-highlightedyank")
 "
 " call minpac#add('johngrib/vim-game-code-break')
 call minpac#add('mklabs/split-term.vim')
+call minpac#add('kassio/neoterm')
 
 
 "" Ctags
@@ -51,6 +52,11 @@ call minpac#add('kana/vim-textobj-indent')
 call minpac#add('kana/vim-textobj-syntax')
 " automatic closing of quotes, parenthesis, brackets, etc.
 call minpac#add('Raimondi/delimitMate')
+" This plugin provides a text-object 'a' (argument)
+call minpac#add('vim-scripts/argtextobj.vim')
+" ai – the current indentation level and the line above
+" ii – the current indentation level excluding the line above
+call minpac#add('michaeljsmith/vim-indent-object')
 
 " plugin for Neovim/Vim to unite all interfaces
 " replace unite
@@ -90,7 +96,7 @@ call minpac#add('bentayloruk/vim-react-es6-snippets')
 
 " LINTING {{{1
 call minpac#add("neomake/neomake")
-" call minpac#add("scrooloose/syntastic")
+call minpac#add("vim-syntastic/syntastic")
 
 " LANGUAGES {{{1
 
@@ -98,8 +104,8 @@ call minpac#add("neomake/neomake")
 call minpac#add('zchee/deoplete-jedi')
 call minpac#add('hkupty/iron.nvim')
 " to test :
-" call minpac#add('hynek/vim-python-pep8-indent', {'for': ['python', 'python3']})
-" call minpac#add('bps/vim-textobj-python', {'for': ['python', 'python3']})
+call minpac#add('hynek/vim-python-pep8-indent', {'for': ['python', 'python3']})
+call minpac#add('bps/vim-textobj-python', {'for': ['python', 'python3']})
 
 " Javascript js
 " call minpac#add('vimlab/neojs')
@@ -108,8 +114,11 @@ call minpac#add('mklabs/mdn.vim')
 call minpac#add('pangloss/vim-javascript')
 call minpac#add('mklabs/jscs.vim', { 'do': 'npm i jscs -g' })
 call minpac#add('burnettk/vim-angular')
-" JavaScript indent support
-call minpac#add('gavocanov/vim-js-indent', { 'for': 'javascript' })
+" JavaScript indexindent support
+call minpac#add('pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] })
+call minpac#add('mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] })
+" call minpac#add('gavocanov/vim-js-indent', { 'for': ['javascript', 'javascript.jsx'] })
+
 " Node support
 call minpac#add('moll/vim-node', { 'for': 'javascript' })
 call minpac#add('othree/javascript-libraries-syntax.vim')
@@ -160,6 +169,11 @@ call minpac#add('elzr/vim-json', {'for': 'json'})
 call minpac#add('chrisbra/csv.vim', {'for': 'csv'})
 "Markdown
 call minpac#add('plasticboy/vim-markdown')
+
+
+" DOC {{{1
+" Blueprint
+call minpac#add('kylef/apiblueprint.vim')
 
 
 " FOOTER {{{1

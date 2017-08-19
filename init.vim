@@ -91,7 +91,7 @@ cmap Sw w ! sudo tee %  > /dev/null
 "
 "
 " Edit config & plugin files quickly{{{2
-let $MYVIMPLUG=fnamemodify($MYVIMRC, ':p:h'). '/plugInit.vim'
+let $MYVIMPLUG=fnamemodify($MYVIMRC, ':p:h'). '/minpacPlug.vim'
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>ep :vsplit $MYVIMPLUG<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -146,10 +146,12 @@ if has("autocmd")
   autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
 
   "Markdown related{{{2
+  autocmd BufNewFile,BufRead *.md set ft=markdown
   " autocmd filetype *.md Markdown
   map gl <Plug>Markdown_EditUrlUnderCursor
 
 endif "end autocmd condition
+
 
 
 
@@ -241,11 +243,14 @@ autocmd vimenter * NERDTree | wincmd p
 " use jshint
 " let g:syntastic_javascript_checkers = ['jshint']
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 1
-" let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": ["apiblueprint"] }
 " let g:syntastic_php_phpcs_quiet_messages = {
 "     \ 'regex': [
 "     \ 'Short PHP opening tag used with echo',
@@ -254,6 +259,7 @@ autocmd vimenter * NERDTree | wincmd p
 "     \ 'File is being conditionally included',
 "     \ 'Opening brace of a class must be on the line'
 "     \ ] }
+let g:syntastic_apiblueprint_checkers = ['drafter']
 
 "NEOSNIPPETS {{{2
 
