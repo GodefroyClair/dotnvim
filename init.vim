@@ -44,7 +44,8 @@ set display+=lastline " as much as poss last line will be displayed. (otherwise 
 
 let g:airline_theme='luna'
 set background=light
-colorscheme solarized8_light
+" colorscheme solarized8_light
+colorscheme nova
 hi Normal ctermfg=lightgrey ctermbg=darkblue "hi = highlight
 hi MatchParen ctermbg=yellow "color of matching pairs
 syntax on " lexical highlight : show syntax in diff colors

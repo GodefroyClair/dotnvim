@@ -32,6 +32,9 @@ call minpac#add("machakann/vim-highlightedyank")
 call minpac#add('mklabs/split-term.vim')
 call minpac#add('kassio/neoterm')
 
+" Esthetics & theme
+call minpac#add("trevordmiller/nova-vim")
+
 
 "" Ctags
 " call minpac#add('taglist.vim')
