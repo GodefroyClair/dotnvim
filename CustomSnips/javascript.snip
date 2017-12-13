@@ -36,3 +36,19 @@ snippet strict
         /* jshint node: true */
         "use strict";
 
+snippet rcc
+  import React, { Component } from 'react';
+  
+  class ${1:componentName} extends Component {
+    render() {
+      return (
+        <div>
+          $0
+        </div>
+      );
+    }
+  }
+
+  export default ${1:componentName};
+
+

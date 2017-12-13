@@ -315,6 +315,14 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 "NERD TREE {{{2
 "let g:nerdtree_tabs_open_on_console_startup=1
 
+"ALE {{{2
+" prettier in included in the eslint config!!
+" let g:ale_fixers = {'javascript': ['prettier-standard']}
+let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_emit_conflict_warnings = 0
+
 "NEOMAKE {{{2
 
 " let g:neomake_javascript_jshint_maker = {
@@ -322,7 +330,7 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 "     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
 "     \ }
 " let g:neomake_javascript_enabled_makers = ['jshint']
-let g:neomake_javascript_enabled_makers = ['eslint']
+" UNCOMMENT TO USE!! let g:neomake_javascript_enabled_makers = ['eslint']
 " let g:neomake_verbose=0
 " let g:neomake_open_list = 0
 
@@ -337,7 +345,7 @@ let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
 let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
 
 " run neomake on the current file on every write:
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 
 " C C++ {{{2
