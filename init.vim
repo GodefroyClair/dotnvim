@@ -5,7 +5,6 @@
 
 
 """" DEBUG & MEMO {{{1
-" let w:airline_disabled=1
 
 """""""""""""""""""""""""""""""
 """""""INTERNAL-VARIABLE"""""""
@@ -319,34 +318,28 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 " prettier in included in the eslint config!!
 " let g:ale_fixers = {'javascript': ['prettier-standard']}
 let g:ale_fixers = {'javascript': ['eslint']}
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pep8', 'vulture']}
 let g:ale_fix_on_save = 1
 let g:ale_emit_conflict_warnings = 0
 
 "NEOMAKE {{{2
 
-" let g:neomake_javascript_jshint_maker = {
-"     \ 'args': ['--verbose'],
-"     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-"     \ }
-" let g:neomake_javascript_enabled_makers = ['jshint']
-" UNCOMMENT TO USE!! let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_verbose=0
-" let g:neomake_open_list = 0
+if ('g:neomake')
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  " let g:neomake_verbose=0
+  " let g:neomake_open_list = 0
 
-" neomake is async => it doesn't block the editor
-" It's a syntastic alternative. Syntastic was slow for me on python files.
-" $ sudo pip2/pip3 install flake8 -U
-" $ sudo pip2/pip3 install vulture -U
-let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
-" let g:neomake_python_enabled_makers = ['flake8', 'pep8']
-" E501 is line length of 80 characters
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
-let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
+  " $ sudo pip2/pip3 install flake8 -U
+  " $ sudo pip2/pip3 install vulture -U
+  let g:neomake_python_enabled_makers = ['flake8', 'pep8', 'vulture']
+  " E501 is line length of 80 characters
+  let g:neomake_python_flake8_maker = { 'args': ['--ignore=E115,E266,E501'], }
+  let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=100', '--ignore=E115,E266'], }
 
-" run neomake on the current file on every write:
-" autocmd! BufWritePost * Neomake
-
+  " run neomake on the current file on every write:
+  " When writing a buffer.
+  call neomake#configure#automake('w')
+endif
 
 " C C++ {{{2
 

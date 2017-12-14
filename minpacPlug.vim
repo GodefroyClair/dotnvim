@@ -22,7 +22,7 @@ call minpac#add("tpope/vim-ragtag")
 " Repeat.vim remaps . in a way that plugins can tap into it.
 call minpac#add("tpope/vim-repeat")
 " CamelCase and underscore_notation
-" call minpac#add("bkad/CamelCaseMotion")
+call minpac#add("bkad/camelcasemotion")
 " hilight yanks
 call minpac#add("machakann/vim-highlightedyank")
 
@@ -107,7 +107,7 @@ call minpac#add('bentayloruk/vim-react-es6-snippets')
 
 
 " LINTING {{{1
-" call minpac#add("neomake/neomake")
+call minpac#add("neomake/neomake")
 call minpac#add("w0rp/ale")
 " call minpac#add("vim-syntastic/syntastic")
 
