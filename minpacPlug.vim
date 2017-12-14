@@ -22,7 +22,7 @@ call minpac#add("tpope/vim-ragtag")
 " Repeat.vim remaps . in a way that plugins can tap into it.
 call minpac#add("tpope/vim-repeat")
 " CamelCase and underscore_notation
-call minpac#add("bkad/camelcasemotion")
+call minpac#add("bkad/CamelCaseMotion")
 " hilight yanks
 call minpac#add("machakann/vim-highlightedyank")
 
@@ -85,6 +85,7 @@ call minpac#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
 " call minpac#add("Shougo/neocomplete")
 " keyword completion
 " call minpac#add('Valloric/YouCompleteMe')
+call minpac#add('alvan/vim-closetag')
 " call minpac#add('ervandew/supertab') " Perform all your vim insert mode completions with Tab
 
 " SNIPPETS {{{1
@@ -101,7 +102,7 @@ call minpac#add('Shougo/neosnippet')
 call minpac#add('Shougo/neosnippet-snippets')
 " Snippets are separated from the engine. Add this if you want them:
 call minpac#add('SirVer/ultisnips')
-call minpac#add('matthewsimo/angular-vim-snippets')
+" call minpac#add('matthewsimo/angular-vim-snippets')
 call minpac#add('justinj/vim-react-snippets')
 call minpac#add('bentayloruk/vim-react-es6-snippets')
 

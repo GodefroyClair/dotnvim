@@ -202,6 +202,7 @@ let g:deoplete#sources#jedi#enable_cachem=1
 
 " vim-plug
 set runtimepath+=~/.config/nvim/plugged/deoplete.nvim
+set runtimepath+=~/.config/nvim/pack/minpac/start/CamelCaseMotion
 " set completeopt+=noinsert,noselect
 " set completeopt-=preview
 
