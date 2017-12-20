@@ -1,0 +1,494 @@
+snippet rcc "reactClassComponent" b
+import React, { Component } from 'react';
+
+class ${1:componentName} extends Component {
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+
+export default ${1:componentName};
+endsnippet
+
+snippet rrc "reactReduxComponent" b
+imports React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+function mapStateToProps(state) {
+	return {
+
+	};
+}
+
+class ${1:componentName} extends Component {
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+
+export default connect(
+	mapStateToProps,
+)(${1:componentName});
+endsnippet
+
+snippet rcjc "reactJustClassComponent" b
+class ${1:componentName} extends Component {
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+
+
+endsnippet
+
+snippet rccp "reactClassComponentPropTypes" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class ${1:componentName} extends Component {
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+
+${1:componentName}.propTypes = {
+
+};
+
+export default ${1:componentName};
+
+endsnippet
+
+snippet rcfc "reactClassComponentWithMethods" b
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class ${1:componentName} extends Component {
+	constructor(props) {
+		super(props);
+
+	}
+
+	componentWillMount() {
+
+	}
+
+	componentDidMount() {
+
+	}
+
+	componentWillReceiveProps(nextProps) {
+
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+
+	}
+
+	componentWillUnmount() {
+
+	}
+
+	render() {
+		return (
+			<div>
+
+			</div>
+		);
+	}
+}
+
+${1:componentName}.propTypes = {
+
+};
+
+export default ${1:componentName};
+
+endsnippet
+
+snippet rwwd "reactWithWebpackDefaults" b
+class ${1:componentName} extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {};
+
+	}
+
+	render() {
+		return(
+			<div>
+
+			$0</div>
+		);
+	}
+}
+
+${1:componentName}.propTypes = {
+
+};
+
+export default ${1:componentName};
+
+endsnippet
+
+snippet rpc "reactPureComponent" b
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+
+class ${1:componentName} extends PureComponent {
+	render() {
+		return (
+			<div>
+				$0
+			</div>
+		);
+	}
+}
+
+${1:componentName}.propTypes = {
+
+};
+
+export default ${1:componentName};
+
+endsnippet
+
+snippet rsc "reactStateless" b
+import React from 'react';
+
+const ${1:mycomponentName} = () => {
+	return (
+		<div>
+			$0
+		</div>
+	);
+};
+
+export default $1;
+
+endsnippet
+
+snippet rscp "reactStatelessProps" b
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const ${1:componentName} = props => {
+	return (
+		<div>
+			
+		</div>
+	);
+};
+
+${1:componentName}.propTypes = {
+	$0
+};
+
+export default ${1:componentName};
+
+endsnippet
+
+snippet con "classConstructor" b
+constructor(props) {
+	super(props);
+	$0
+}
+
+
+endsnippet
+
+snippet conc "classConstructorContext" b
+constructor(props, context) {
+	super(props, context);
+	$0
+}
+
+
+endsnippet
+
+snippet est "emptyState" b
+this.state = {
+	$1
+};
+
+endsnippet
+
+snippet cwm "componentWillMount" b
+
+componentWillMount() {
+	$0
+}
+
+
+endsnippet
+
+snippet cdm "componentDidMount" b
+componentDidMount() {
+	$0
+}
+
+
+endsnippet
+
+snippet cwr "componentWillReceiveProps" b
+componentWillReceiveProps(nextProps) {
+	$0
+}
+
+
+endsnippet
+
+snippet scu "shouldComponentUpdate" b
+shouldComponentUpdate(nextProps, nextState) {
+	$0
+}
+
+
+endsnippet
+
+snippet cwup "componentWillUpdate" b
+componentWillUpdate(nextProps, nextState) {
+	$0
+}
+
+
+endsnippet
+
+snippet cdup "componentDidUpdate" b
+componentDidUpdate(prevProps, prevState) {
+	$0
+}
+
+
+endsnippet
+
+snippet cwun "componentWillUnmount" b
+componentWillUnmount() {
+	$0
+}
+
+
+endsnippet
+
+snippet ren "componentRender" b
+render() {
+	return (
+		<div>
+			$0
+		</div>
+	);
+}
+
+endsnippet
+
+snippet sst "componentSetStateObject" b
+this.setState($0);
+
+endsnippet
+
+snippet ssf "componentSetStateFunc" b
+this.setState((state, props) => { return { $0 }});
+
+
+endsnippet
+
+snippet props "componentProps" b
+this.props.$0
+
+endsnippet
+
+snippet state "componentState" b
+this.state.$0
+
+endsnippet
+
+snippet bnd "bindThis" b
+this.$1 = this.$1.bind(this);$0
+
+endsnippet
+
+snippet rpt "propTypes" b
+$1.propTypes = {
+	$2
+};
+
+endsnippet
+
+snippet rdp "propTypes_deux" b
+$1.defaultProps = {
+	$2
+};
+
+endsnippet
+
+snippet pta "propTypeArray" b
+PropTypes.array,
+
+endsnippet
+
+snippet ptar "propTypeArrayRequired" b
+PropTypes.array.isRequired,
+
+endsnippet
+
+snippet ptb "propTypeBool" b
+PropTypes.bool,
+
+endsnippet
+
+snippet ptbr "propTypeBoolRequired" b
+PropTypes.bool.isRequired,
+
+endsnippet
+
+snippet ptf "propTypeFunc" b
+PropTypes.func,
+
+endsnippet
+
+snippet ptfr "propTypeFuncRequired" b
+PropTypes.func.isRequired,
+
+endsnippet
+
+snippet ptn "propTypeNumber" b
+PropTypes.number,
+
+endsnippet
+
+snippet ptnr "propTypeNumberRequired" b
+PropTypes.number.isRequired,
+
+endsnippet
+
+snippet pto "propTypeObject" b
+PropTypes.object,
+
+endsnippet
+
+snippet ptor "propTypeObjectRequired" b
+PropTypes.object.isRequired,
+
+endsnippet
+
+snippet pts "propTypeString" b
+PropTypes.string,
+
+endsnippet
+
+snippet ptsr "propTypeStringRequired" b
+PropTypes.string.isRequired,
+
+endsnippet
+
+snippet ptnd "propTypeNode" b
+PropTypes.node,
+
+endsnippet
+
+snippet ptndr "propTypeNodeRequired" b
+PropTypes.node.isRequired,
+
+endsnippet
+
+snippet ptel "propTypeElement" b
+PropTypes.element,
+
+endsnippet
+
+snippet ptelr "propTypeElementRequired" b
+PropTypes.element.isRequired,
+
+endsnippet
+
+snippet pti "propTypeInstanceOf" b
+PropTypes.instanceOf($0),
+
+endsnippet
+
+snippet ptir "propTypeInstanceOfRequired" b
+PropTypes.instanceOf($0).isRequired,
+
+endsnippet
+
+snippet pte "propTypeEnum" b
+PropTypes.oneOf(['$0']),
+
+endsnippet
+
+snippet pter "propTypeEnumRequired" b
+PropTypes.oneOf(['$0']).isRequired,
+
+endsnippet
+
+snippet ptet "propTypeOneOfType" b
+PropTypes.oneOfType([
+	$0
+]),
+
+endsnippet
+
+snippet ptetr "propTypeOneOfTypeRequired" b
+PropTypes.oneOfType([
+	$0
+]).isRequired,
+
+endsnippet
+
+snippet ptao "propTypeArrayOf" b
+PropTypes.arrayOf($0),
+
+endsnippet
+
+snippet ptaor "propTypeArrayOfRequired" b
+PropTypes.arrayOf($0).isRequired,
+
+endsnippet
+
+snippet ptoo "propTypeObjectOf" b
+PropTypes.objectOf($0),
+
+endsnippet
+
+snippet ptoor "propTypeObjectOfRequired" b
+PropTypes.objectOf($0).isRequired,
+
+endsnippet
+
+snippet ptsh "propTypeShape" b
+PropTypes.shape({
+	$0
+}),
+
+endsnippet
+
+snippet ptshr "propTypeShapeRequired" b
+PropTypes.shape({
+	$0
+}).isRequired,
+endsnippet

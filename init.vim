@@ -23,7 +23,7 @@
 " LAUNCH PLUGIN PATH {{{1
 " source ~/.config/nvim/plugInit.vim
 source ~/.config/nvim/minpacPlug.vim
-runtime macros/matchit.vim
+" runtime macros/matchit.vim
 
 " GEN CONFIG OF NVIM {{{1
 
@@ -77,6 +77,7 @@ set list " show invisibles
 set listchars=tab:▸\ ,eol:¬ " show invisibles options
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+au VimEnter,BufWinEnter * syn match ErrorMsg " "
 
 " Set simple automatic syntax
 set nojoinspaces " don't add spaces after '.', '?'...
@@ -119,7 +120,6 @@ if has("autocmd")
   " general{{{2
   autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
   au filetype html,xml,php,javascript iabbrev </ </<c-x><c-o>
-  autocmd filetype vim set foldmethod=marker
   "autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
 
   " web{{{2
@@ -185,8 +185,11 @@ set tags=tags;/
 
 set foldlevelstart=0
 set foldmethod=marker
+autocmd filetype vim set foldmethod=marker
+autocmd filetype snippets set foldmethod=indent
 
 "PLUGINS TUNING {{{1
+  autocmd filetype snippets set foldmethod=indent
 
 "DEOPLETE {{{2
 
@@ -200,12 +203,8 @@ let g:deoplete#sources#jedi#enable_cachem=1
 " let g:deoplete#sources#jedi#debug_server
 
 
-" vim-plug
-set runtimepath+=~/.config/nvim/plugged/deoplete.nvim
+" bug with minpac??
 set runtimepath+=~/.config/nvim/pack/minpac/start/CamelCaseMotion
-" set completeopt+=noinsert,noselect
-" set completeopt-=preview
-
 
 
 " deoplete-tern
@@ -221,7 +220,25 @@ let g:tern#filetypes = [
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
 
+" By default Vim doesn't automatically detect filetypes
+" you'll need to enable it manually by adding this to your vimrc:
 filetype plugin indent on
+
+"VIM-CLOSETAG {{{2
+" filenames like *.xml, *.html, *.xhtml, ...
+" Then after you press <kbd>&gt;</kbd> in these files, this plugin will try to close the current tag.
+"
+" let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non closing tags self closing in the specified files.
+"
+" let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+
+" Shortcut for closing tags, default is '>'
+" let g:closetag_shortcut = '>'
+" Add > at current position without closing the current tag, default is ''
+" let g:closetag_close_shortcut = '<leader>>'
 
 "CamelCaseMotion {{{2
 
@@ -265,28 +282,28 @@ let g:syntastic_apiblueprint_checkers = ['drafter']
 "NEOSNIPPETS {{{2
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
-imap <expr><TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ neosnippet#expandable_or_jumpable() ?
-      \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <expr><TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ neosnippet#expandable_or_jumpable() ?
+"       \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"       \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 " let g:neosnippet#snippets_directory='~/.config/nvim/CustomSnips'
-let g:neosnippet#snippets_directory='~/.config/nvim/plugged/neosnippet-snippets/neosnippet, ~/.config/nvim/plugged/angular-vim-snippets/snippets, ~/.config/nvim/CustomSnips'
+" let g:neosnippet#snippets_directory='~/.config/nvim/plugged/neosnippet-snippets/neosnippet, ~/.config/nvim/plugged/angular-vim-snippets/snippets, ~/.config/nvim/CustomSnips'
 
 
 "Edit snippet file in vertical split
-command! NeoSnipEditV NeoSnippetEdit -split -vertical
+" command! NeoSnipEditV NeoSnippetEdit -split -vertical
 
 "YOUCOMPLETEME {{{2
 
@@ -299,16 +316,14 @@ command! NeoSnipEditV NeoSnippetEdit -split -vertical
 " let g:ycm_confirm_extra_conf=0
 
 "UTLISNIPS {{{2
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<s-k>"
 
 " files to store snippets, where UltiSnipEdit is seeking when writing a new file
 " let g:UltiSnipsEditSplit='horizontal'
 "let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
-" let g:UltiSnipsSnippetsDir="~/.config/nvim/CustomSnips"
+let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 "file where the snippets are looked for
 " let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
 

@@ -25,7 +25,7 @@ call minpac#add("tpope/vim-ragtag")
 " Repeat.vim remaps . in a way that plugins can tap into it.
 call minpac#add("tpope/vim-repeat")
 " hilight yanks
-call minpac#add("machakann/vim-highlightedyank")
+" call minpac#add("machakann/vim-highlightedyank")
 " CamelCase and underscore_notation
 call minpac#add("bkad/CamelCaseMotion")
 
@@ -88,7 +88,6 @@ call minpac#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
 " call minpac#add("Shougo/neocomplete")
 " keyword completion
 " call minpac#add('Valloric/YouCompleteMe')
-
 " call minpac#add('alvan/vim-closetag')
 " call minpac#add('ervandew/supertab') " Perform all your vim insert mode completions with Tab
 
@@ -97,30 +96,29 @@ call minpac#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
 " snipMate
 call minpac#add('MarcWeber/vim-addon-mw-utils')
 call minpac#add('tomtom/tlib_vim')
-" call minpac#add('garbas/vim-snipmate')
+call minpac#add('garbas/vim-snipmate')
 " Optional 
-" call minpac#add('honza/vim-snippets')
+call minpac#add('honza/vim-snippets')
 
 " snippets : Track the engine.
-" call minpac#add('Shougo/neosnippet')
-" call minpac#add('Shougo/neosnippet-snippets')
+call minpac#add('Shougo/neosnippet')
+call minpac#add('Shougo/neosnippet-snippets')
 " Snippets are separated from the engine. Add this if you want them:
-
-" ultisnips
 call minpac#add('SirVer/ultisnips')
+" call minpac#add('matthewsimo/angular-vim-snippets')
 call minpac#add('justinj/vim-react-snippets')
 call minpac#add('bentayloruk/vim-react-es6-snippets')
 
 " An Interface to WEB APIs. (dependency for Emmet
 " call minpac#add('mattn/webapi-vim')
-
 " Emmet
 " call minpac#add('mattn/emmet-vim')
 
 
 " LINTING {{{1
-" call minpac#add("neomake/neomake")
+call minpac#add("neomake/neomake")
 call minpac#add("w0rp/ale")
+" call minpac#add("vim-syntastic/syntastic")
 
 " LANGUAGES SPECIFIC {{{1
 
@@ -132,14 +130,16 @@ call minpac#add('hynek/vim-python-pep8-indent', {'for': ['python', 'python3']})
 call minpac#add('bps/vim-textobj-python', {'for': ['python', 'python3']})
 
 " Javascript js
-"call minpac#add('vimlab/neojs') " workd with plug
+" call minpac#add('vimlab/neojs')
 " call minpac#add('neovim/node-host') " in neovim
-call minpac#add('mklabs/mdn.vim') " documentation
+call minpac#add('mklabs/mdn.vim')
 " snippets
 call minpac#add('isRuslan/vim-es6')
 " call minpac#add('pangloss/vim-javascript')
+" call minpac#add('mklabs/jscs.vim', { 'do': 'npm i jscs -g' }) " merge with
 " eslint
 
+" call minpac#add('burnettk/vim-angular')
 " JavaScript indexindent support
 " call minpac#add('pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] })
 " call minpac#add('mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] })
@@ -155,7 +155,8 @@ call minpac#add('moll/vim-node', { 'for': 'javascript' })
 " ES6 and beyond syntax
 " call minpac#add('othree/es.next.syntax.vim', { 'for': 'javascript' })
 
-call minpac#add('Galooshi/vim-import-js', { 'do': 'npm install -g import-js' })
+" Jsx
+call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript'] })
 
 " Typescript
 call minpac#add('mhartington/deoplete-typescript')
@@ -183,10 +184,6 @@ call minpac#add('Rip-Rip/clang_complete', {'for': ['c', 'cpp']})
 
 " HTML
 "html5 + inline svg omnicomplete function, indent and syntax for vim. based on the default htmlcomplete.vim.
-" CSS
-call minpac#add('wavded/vim-stylus')
-
-" CSS3/HTML5 bundled in and adapted from css3.vim by Hsiaoming Young
 call minpac#add('othree/html5.vim')
 call minpac#add('htacg/tidy-html5')
 
