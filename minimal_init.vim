@@ -4,3 +4,4 @@
 
 
 source ~/.config/nvim/minpacPlug.vim
+call camelcasemotion#CreateMotionMappings('<leader>')

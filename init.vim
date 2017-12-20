@@ -3,7 +3,6 @@
 " " Source: Neil Drew, Tim Pope...
 
 
-
 """" DEBUG & MEMO {{{1
 
 """""""""""""""""""""""""""""""
@@ -133,7 +132,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.py,*.pyc set ft=python
 
   "js /json related{{{2
-  autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
+  " autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
   autocmd BufNewFile,BufRead *.json set ft=javascript
 
   "php related{{{2
@@ -201,7 +200,17 @@ let g:deoplete#sources#jedi#enable_cachem=1
 " let g:deoplete#sources#jedi#show_docstring=0
 " let g:deoplete#sources#jedi#python_path
 " let g:deoplete#sources#jedi#debug_server
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
 
+set completeopt=longest,menuone,preview
+" let g:deoplete#sources = {}
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
 
 " bug with minpac??
 set runtimepath+=~/.config/nvim/pack/minpac/start/CamelCaseMotion
@@ -331,12 +340,16 @@ let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 "let g:nerdtree_tabs_open_on_console_startup=1
 
 "ALE {{{2
-" prettier in included in the eslint config!!
-" let g:ale_fixers = {'javascript': ['prettier-standard']}
-let g:ale_fixers = {'javascript': ['eslint']}
-let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pep8', 'vulture']}
-let g:ale_fix_on_save = 1
-let g:ale_emit_conflict_warnings = 0
+if 1 "exists('g:ale_enabled')
+  let g:ale_completion_enabled = 1
+  " prettier in included in the eslint config!!
+  let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python' ['flake8', 'pep8', 'vulture'], 'lint': ['vint']}
+  let g:ale_fixers = {'javascript': ['eslint'], 'javascript.jsx': ['eslint']}
+  let g:ale_fix_on_save = 1
+  let g:ale_emit_conflict_warnings = 1
+else
+  echo 'ALE not loaded'
+endif
 
 "NEOMAKE {{{2
 
@@ -378,7 +391,7 @@ let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/
 "autocmd filetype php let g:php_folding=2
 let g:DisableAutoPHPFolding = 1
 
-"javascript {{{2
+" Javascript {{{2
 let g:javascript_enable_domhtmlcss = 1
 "jsx
 let g:jsx_ext_required = 0

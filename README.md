@@ -22,7 +22,10 @@ Install minpac:
  
 Install pip & npm dep:
     pip3 install neovim
+    npm install -g tern
+    npm install -g import-js
     npm install -g typescript
+    npm install -g neovim
     
 
 In vim:

@@ -57,7 +57,8 @@ call minpac#add('kana/vim-textobj-indent')
 " use ay or iy to select syntax highlighted (e.g in vimrc ~)
 call minpac#add('kana/vim-textobj-syntax')
 " automatic closing of quotes, parenthesis, brackets, etc.
-call minpac#add('Raimondi/delimitMate')
+" call minpac#add('Raimondi/delimitMate')
+call minpac#add('jiangmiao/auto-pairs')
 " This plugin provides a text-object 'a' (argument)
 call minpac#add('vim-scripts/argtextobj.vim')
 " ai – the current indentation level and the line above
@@ -80,10 +81,13 @@ call minpac#add("vim-airline/vim-airline-themes")
 
 " DEVELOPER TOOLS {{{1
 call minpac#add("metakirby5/codi.vim")
+
 " AUTOCOMPLETION {{{1
 " Async keyword completion
 call minpac#add('Shougo/deoplete.nvim') ", { 'do': ':UpdateRemotePlugins' })
 call minpac#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
+call minpac#add('ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }, {'do': 'npm install'})
+" call minpac#add('othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] })
 " same as deoplete for vim 8
 " call minpac#add("Shougo/neocomplete")
 " keyword completion
@@ -142,7 +146,8 @@ call minpac#add('isRuslan/vim-es6')
 
 " JavaScript indexindent support
 " call minpac#add('pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] })
-" call minpac#add('mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] })
+" vim-jsx is somehow useful to defect jsx filetype in js
+call minpac#add('mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] })
 " call minpac#add('gavocanov/vim-js-indent', { 'for': ['javascript', 'javascript.jsx'] })
 
 " Node support
@@ -155,7 +160,7 @@ call minpac#add('moll/vim-node', { 'for': 'javascript' })
 " ES6 and beyond syntax
 " call minpac#add('othree/es.next.syntax.vim', { 'for': 'javascript' })
 
-call minpac#add('Galooshi/vim-import-js', { 'do': 'npm install -g import-js' })
+call minpac#add('Galooshi/vim-import-js') ", { 'do': 'npm install -g import-js' })
 
 " Typescript
 call minpac#add('mhartington/deoplete-typescript')
