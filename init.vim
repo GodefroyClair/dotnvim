@@ -1,4 +1,4 @@
-" nvim/init.vim
+""""""""""" NVIM config file : INIT.VIM """"""""""""""
 " " Author: Godefroy Clair
 " " Source: Neil Drew, Tim Pope...
 
@@ -28,7 +28,7 @@ source ~/.config/nvim/minpacPlug.vim
 
 " Set general behavior (window, sounds...) {{{2
 "map the "leader" key
-let mapleader=","
+let g:mapleader=','
 set modelines=5 " nb lines (beg + end) vim checks for initializations
 set updatetime=1000 " ms inactivity bfr writing 2 swap file
 
@@ -51,7 +51,7 @@ nnoremap <CR> :nohlsearch<CR><CR> " rm search highlight
 
 " Window settings (split and moves)
 set splitbelow
-set vb t_vb= " no beep or flash is wanted,
+set visualbell t_vb= " no beep or flash is wanted,
 set mouse=a
 " nvim terminal emulation window commands
 if has('nvim')
@@ -110,7 +110,7 @@ nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
 
 " FILETYPE {{{1
 
-if has("autocmd")
+if has('autocmd')
   "auto-completion (autocmd or au)
   "BufRead is triggered after the buffer has been populated with the content of a file.
   "BufEnter is triggered after you enter a buffer for editing.
@@ -158,7 +158,7 @@ endif "end autocmd condition
 "------------------------------------
 " Nvim-R
 "------------------------------------
-if has("gui_running")
+if has('gui_running')
   inoremap <C-Space> <C-x><C-o>
 else
   inoremap <Nul> <C-x><C-o>
@@ -204,7 +204,7 @@ let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
   \ 'tern#Complete',
   \ 'jspc#omni'
-\]
+  \]
 
 set completeopt=longest,menuone,preview
 " let g:deoplete#sources = {}
@@ -259,36 +259,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 "open nerdtree & put cursor into file to edit
 autocmd vimenter * NERDTree | wincmd p
 
-"SYNTASTIC {{{2
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-" use eslint
-" let g:syntastic_javascript_checkers = ['eslint']
-" use jshint
-" let g:syntastic_javascript_checkers = ['jshint']
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_quiet_messages = { "type": "style" }
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": ["apiblueprint"] }
-" let g:syntastic_php_phpcs_quiet_messages = {
-"     \ 'regex': [
-"     \ 'Short PHP opening tag used with echo',
-"     \ 'Missing file doc comment',
-"     \ 'Opening brace should be on a new line',
-"     \ 'File is being conditionally included',
-"     \ 'Opening brace of a class must be on the line'
-"     \ ] }
-let g:syntastic_apiblueprint_checkers = ['drafter']
-
-"NEOSNIPPETS {{{2
+" NEOSNIPPETS {{{2
 
 " Plugin key-mappings.
 " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -314,25 +285,15 @@ let g:syntastic_apiblueprint_checkers = ['drafter']
 "Edit snippet file in vertical split
 " command! NeoSnipEditV NeoSnippetEdit -split -vertical
 
-"YOUCOMPLETEME {{{2
-
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_autoclose_preview_window_after_insertion = 1
-" let g:ycm_use_ultisnips_completer = 1
-"disable the use of tabs and shift tabs forjYCM - use <C-N> & <C-P> instead
-" let g:ycm_key_list_select_completion=[]
-" let g:ycm_key_list_previous_completion=[]
-" let g:ycm_confirm_extra_conf=0
-
 "UTLISNIPS {{{2
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<s-k>"
+let g:UltiSnipsExpandTrigger='<c-k>'
+let g:UltiSnipsJumpForwardTrigger='<c-k>'
+let g:UltiSnipsJumpBackwardTrigger='<s-k>'
 
 " files to store snippets, where UltiSnipEdit is seeking when writing a new file
 " let g:UltiSnipsEditSplit='horizontal'
 "let g:UltiSnipsSnippetsDir="~/.config/nvim/plugged/vim-snippets/UltiSnips"
-let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
+let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 "file where the snippets are looked for
 " let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/plugged/vim-snippets/UltiSnips', '~/.config/nvim/CustomSnips' ]
 
@@ -343,7 +304,7 @@ let g:UltiSnipsSnippetsDir="~/.config/nvim/UltiSnips"
 if 1 "exists('g:ale_enabled')
   let g:ale_completion_enabled = 1
   " prettier in included in the eslint config!!
-  let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python' ['flake8', 'pep8', 'vulture'], 'lint': ['vint']}
+  let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python': ['flake8', 'pep8', 'vulture'], 'vim': ['vint']}
   let g:ale_fixers = {'javascript': ['eslint'], 'javascript.jsx': ['eslint']}
   let g:ale_fix_on_save = 1
   let g:ale_emit_conflict_warnings = 1
@@ -353,6 +314,7 @@ endif
 
 "NEOMAKE {{{2
 
+" not sure condition is working...
 if ('g:neomake')
   let g:neomake_javascript_enabled_makers = ['eslint']
   " let g:neomake_verbose=0
@@ -369,6 +331,16 @@ if ('g:neomake')
   " When writing a buffer.
   call neomake#configure#automake('w')
 endif
+
+"YOUCOMPLETEME {{{2
+
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_use_ultisnips_completer = 1
+"disable the use of tabs and shift tabs forjYCM - use <C-N> & <C-P> instead
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
+" let g:ycm_confirm_extra_conf=0
 
 " C C++ {{{2
 
@@ -403,7 +375,7 @@ let g:vim_markdown_folding_disabled = 1
 "
 " FRAMEWORKS {{{1
 "
-if has("autocmd")
+if has('autocmd')
   autocmd Bufnewfile *.html,*.htm 0r ~/.config/nvim/templates/html5Base.html
   autocmd Bufnewfile *.php 0r ~/.config/nvim/templates/phpBase.php
 endif
