@@ -2,8 +2,9 @@
 " " Author: Godefroy Clair
 " " Source: Neil Drew, Tim Pope...
 
+" MY COMMANDS {{{1
 
-"""" DEBUG & MEMO {{{1
+" Memo {{{2
 
 """""""""""""""""""""""""""""""
 """""""INTERNAL-VARIABLE"""""""
@@ -18,6 +19,14 @@
 " function-argument  a:     Function argument (only inside a function).
 " vim-variable       v:     Global, predefined by Vim.
 
+" By default Vim doesn't automatically detect filetypes
+" you'll need to enable it manually by adding this to your vimrc:
+filetype plugin indent on
+
+" Shortcuts  {{{2
+" get to the file under cursor
+nmap ;e :execute 'next ' . expand('<cfile>')<CR>
+nmap ;o :echo expand('<cfile>')
 
 " LAUNCH PLUGIN PATH {{{1
 " source ~/.config/nvim/plugInit.vim
@@ -37,6 +46,10 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set display+=lastline " as much as poss last line will be displayed. (otherwise replaced with "@" lines)
+
+"  autcomp menu like zsh
+set wildmenu
+set wildmode=full
 
 " Set aestethics (window, sounds...) {{{2
 
@@ -61,7 +74,7 @@ if has('nvim')
   tnoremap <A-j> <C-\><C-n><C-w>j
   tnoremap <A-k> <C-\><C-n><C-w>k
   tnoremap <A-l> <C-\><C-n><C-w>l
-    command! Termb bot 5split | term " create special terminal window
+  command! Termb bot 5split | term " create special terminal window
 endif
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
@@ -70,7 +83,11 @@ nnoremap <A-l> <C-w>l
 
 
 " Set information display {{{2
+
+" u need both num & relat_num to get line nb on the line et relat_nb around
 set number
+set relativenumber 
+
 set laststatus=2 " always have a status line
 set list " show invisibles
 set listchars=tab:▸\ ,eol:¬ " show invisibles options
@@ -111,10 +128,10 @@ nmap <Leader>s :setlocal spell! spelllang=en_us<CR>
 " FILETYPE {{{1
 
 if has('autocmd')
-  "auto-completion (autocmd or au)
-  "BufRead is triggered after the buffer has been populated with the content of a file.
-  "BufEnter is triggered after you enter a buffer for editing.
-  "use BufNew, BufRead or BufAdd for things at creation of buffer
+  " auto-completion (autocmd or au)
+  " BufRead is triggered after the buffer has been populated with the content of a file.
+  " BufEnter is triggered after you enter a buffer for editing.
+  " use BufNew, BufRead or BufAdd for things at creation of buffer
 
   " general{{{2
   autocmd BufNewFile,BufRead *.conf,*.rss,*.atom,*.xml setfiletype xml
@@ -122,25 +139,25 @@ if has('autocmd')
   "autocmd BufRead,BufNewFile *.html,*.js,*.xmlimap </ </<c-x><c-o><Esc>
 
   " web{{{2
-  autocmd BufNewFile,BufRead *.html,*.ejs set ft=html
+  autocmd BufNewFile,BufRead *.html set ft=html
 
   autocmd filetype html set omnifunc=htmlcomplete#CompleteTags
   autocmd filetype vim set spelllang=en_us
   autocmd filetype md set spelllang=fr_FR
 
   "python related{{{2
-  autocmd BufNewFile,BufRead *.py,*.pyc set ft=python
+  " autocmd BufNewFile,BufRead *.py,*.pyc set ft=python
 
   "js /json related{{{2
   " autocmd filetype javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd BufNewFile,BufRead *.json set ft=javascript
+  " autocmd BufNewFile,BufRead *.json set ft=javascript
 
   "php related{{{2
-  autocmd Bufnewfile,BufRead *.PHP,*.php set filetype=php
+  " autocmd Bufnewfile,BufRead *.PHP set filetype=php
   autocmd filetype php set foldmethod=marker
 
   "R related{{{2
-  autocmd BufNewFile,BufRead *.r,*.R set ft=r
+  " autocmd BufNewFile,BufRead *.r,*.R set ft=r
   " autocmd filetype r set path+=~/githubRepos/general-functions
   autocmd filetype r set shiftwidth=4 "indenting is 4 spaces
 
@@ -150,7 +167,6 @@ if has('autocmd')
   map gl <Plug>Markdown_EditUrlUnderCursor
 
 endif "end autocmd condition
-
 
 
 
@@ -182,29 +198,31 @@ set tags=tags;/
 
 " FOLDING {{{1
 
-set foldlevelstart=0
-set foldmethod=marker
+set foldlevelstart=1
+set foldmethod=indent
 autocmd filetype vim set foldmethod=marker
 autocmd filetype snippets set foldmethod=indent
 
 "PLUGINS TUNING {{{1
-  autocmd filetype snippets set foldmethod=indent
+autocmd filetype snippets set foldmethod=indent
 
 "DEOPLETE {{{2
 
 "" Enable deoplete at startup
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#tss#javascript_support = 1
-let g:deoplete#sources#jedi#statement_length=30
-let g:deoplete#sources#jedi#enable_cachem=1
+" let g:deoplete#sources#jedi#statement_length=30
+" let g:deoplete#sources#jedi#enable_cachem=1
 " let g:deoplete#sources#jedi#show_docstring=0
 " let g:deoplete#sources#jedi#python_path
 " let g:deoplete#sources#jedi#debug_server
+" VimL quirk :
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-  \]
+      \ 'tern#Complete',
+      \ 'jspc#omni',
+      \ 'LanguageClient#Complete'
+      \]
 
 set completeopt=longest,menuone,preview
 " let g:deoplete#sources = {}
@@ -226,12 +244,43 @@ let g:tern#filetypes = [
       \ 'vue',
       \ ]
 
+" LSP
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+" Minimal LSP configuration for JavaScript
+let g:LanguageClient_serverCommands = {}
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+if executable('javascript-typescript-stdio')
+  " Minimal LSP configuration for JavaScript & jsx
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands['javascript.jsx'] = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  augroup js
+    autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+  augroup END
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
+
+" SuperTab to help me use <Tab> for everything except expanding UltiSnips snippets
+" TO REMOVE??
+augroup js
+  autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+augroup END
+
+let g:UltiSnipsExpandTrigger='<C-j>'
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 hi Pmenu    gui=NONE    guifg=#c5c8c6 guibg=#373b41
 hi PmenuSel gui=reverse guifg=#c5c8c6 guibg=#373b41
 
-" By default Vim doesn't automatically detect filetypes
-" you'll need to enable it manually by adding this to your vimrc:
-filetype plugin indent on
 
 "VIM-CLOSETAG {{{2
 " filenames like *.xml, *.html, *.xhtml, ...
@@ -304,8 +353,10 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips'
 if 1 "exists('g:ale_enabled')
   let g:ale_completion_enabled = 1
   " prettier in included in the eslint config!!
-  let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python': ['flake8', 'pep8', 'vulture'], 'vim': ['vint']}
-  let g:ale_fixers = {'javascript': ['eslint'], 'javascript.jsx': ['eslint']}
+  " Flake8 is a wrapper around PyFlakes, pycodestyle, Ned Batchelder’s McCabe script
+  let g:ale_linters = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python': ['flake8', 'vulture'], 'vim': ['vint'], 'r': ['lintr'], 'reason': ['merlin'], 'cpp': ['clang']}
+  let g:ale_fixers = {'javascript': ['eslint'], 'javascript.jsx': ['eslint'], 'python': ['autopep8']}
+  let g:ale_python_autopep8_options = '--aggressive'
   let g:ale_fix_on_save = 1
   let g:ale_emit_conflict_warnings = 1
 else
@@ -368,6 +419,10 @@ let g:javascript_enable_domhtmlcss = 1
 "jsx
 let g:jsx_ext_required = 0
 
+" Reason ML
+let g:LanguageClient_serverCommands.reason = ['ocaml-language-server', '--stdio']
+let g:LanguageClient_serverCommands.ocaml = ['ocaml-language-server', '--stdio']
+
 " Markdown {{{2
 let g:vim_markdown_folding_disabled = 1
 
@@ -377,25 +432,6 @@ let g:vim_markdown_folding_disabled = 1
 "
 if has('autocmd')
   autocmd Bufnewfile *.html,*.htm 0r ~/.config/nvim/templates/html5Base.html
-  autocmd Bufnewfile *.php 0r ~/.config/nvim/templates/phpBase.php
+  " autocmd Bufnewfile *.php 0r ~/.config/nvim/templates/phpBase.php
 endif
 
-"
-
-
-
-" function! FormatprgLocal(filter)
-"     if !empty(v:char)
-"         return 1
-"     else
-"         let l:command = v:lnum.','.(v:lnum+v:count-1).'!'.a:filter
-"         echo l:command
-"         execute l:command
-"     endif
-" endfunction
-
-" if has("autocmd")
-"     let pandoc_pipeline  = "pandoc --from=html --to=html"
-"     autocmd FileType html setlocal formatexpr=FormatprgLocal(pandoc_pipeline)
-" endif
-"

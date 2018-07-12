@@ -1,33 +1,35 @@
 packadd minpac
+
 call minpac#init()
 
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
+call minpac#add('sheerun/vim-polyglot')
 " GENERAL STUFF {{{1
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 " Git
 call minpac#add('airblade/vim-gitgutter')
 " Git wrapper 
-call minpac#add("tpope/vim-fugitive")
+call minpac#add('tpope/vim-fugitive')
 " put commentary with the gc operator
-call minpac#add("tpope/vim-commentary")
+call minpac#add('tpope/vim-commentary')
 " cs : provides mappings to del, chg, add surroundings in pairs.
-call minpac#add("tpope/vim-surround")
+call minpac#add('tpope/vim-surround')
 " Complementary pairs of mappings. Mostly fall into four categories.
-call minpac#add("tpope/vim-unimpaired")
+call minpac#add('tpope/vim-unimpaired')
 " add info to character revealing with ga 
-call minpac#add("tpope/vim-characterize")
+call minpac#add('tpope/vim-characterize')
 " sugar for the UNIX shell commands
-call minpac#add("tpope/vim-eunuch")
+call minpac#add('tpope/vim-eunuch')
 " A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, etc. 
 " base : <ctrl-X> <ctrl-V>
-call minpac#add("tpope/vim-ragtag")
+call minpac#add('tpope/vim-ragtag')
 " Repeat.vim remaps . in a way that plugins can tap into it.
-call minpac#add("tpope/vim-repeat")
+call minpac#add('tpope/vim-repeat')
 " hilight yanks
-call minpac#add("machakann/vim-highlightedyank")
+call minpac#add('machakann/vim-highlightedyank')
 " CamelCase and underscore_notation
-call minpac#add("bkad/CamelCaseMotion")
+call minpac#add('bkad/CamelCaseMotion')
 
 " General enhancements
 "
@@ -36,7 +38,7 @@ call minpac#add('mklabs/split-term.vim')
 call minpac#add('kassio/neoterm')
 
 " Esthetics & theme
-call minpac#add("trevordmiller/nova-vim")
+call minpac#add('trevordmiller/nova-vim')
 
 
 "" Ctags
@@ -67,34 +69,48 @@ call minpac#add('michaeljsmith/vim-indent-object')
 
 " plugin for Neovim/Vim to unite all interfaces
 " replace unite
-call minpac#add("Shougo/denite.nvim")
+call minpac#add('Shougo/denite.nvim')
 
 " Nerdtree {{{1
-call minpac#add("scrooloose/nerdtree")
-call minpac#add("jistr/vim-nerdtree-tabs")
-call minpac#add("scrooloose/nerdtree", {"on": "NERDTreeToggle"})
-call minpac#add("albfan/nerdtree-git-plugin", {"on": "NERDTreeToggle"})
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('jistr/vim-nerdtree-tabs')
+call minpac#add('scrooloose/nerdtree', {'on': 'NERDTreeToggle'})
+call minpac#add('albfan/nerdtree-git-plugin', {'on': 'NERDTreeToggle'})
 
 " STATUS BAR {{{1
-call minpac#add("vim-airline/vim-airline")
-call minpac#add("vim-airline/vim-airline-themes")
+call minpac#add('vim-airline/vim-airline')
+call minpac#add('vim-airline/vim-airline-themes')
 
 " DEVELOPER TOOLS {{{1
-call minpac#add("metakirby5/codi.vim")
+call minpac#add('metakirby5/codi.vim')
 
 " AUTOCOMPLETION {{{1
 " Async keyword completion
 call minpac#add('Shougo/deoplete.nvim') ", { 'do': ':UpdateRemotePlugins' })
 call minpac#add('carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' })
 call minpac#add('ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }, {'do': 'npm install'})
-" call minpac#add('othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] })
+
+" LanguageClient (Language Server Protocol)
+
+call minpac#add('autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ })
+
+" (Optional) Multi-entry selection UI.
+call minpac#add('junegunn/fzf')
+
+" jspc
+call minpac#add('othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx', 'typescript'] })
+
+
 " same as deoplete for vim 8
-" call minpac#add("Shougo/neocomplete")
+" call minpac#add('Shougo/neocomplete')
 " keyword completion
 " call minpac#add('Valloric/YouCompleteMe')
 
 " call minpac#add('alvan/vim-closetag')
-" call minpac#add('ervandew/supertab') " Perform all your vim insert mode completions with Tab
+call minpac#add('ervandew/supertab') " Perform all your vim insert mode completions with Tab
 
 " SNIPPETS {{{1
 
@@ -104,11 +120,6 @@ call minpac#add('tomtom/tlib_vim')
 " call minpac#add('garbas/vim-snipmate')
 " Optional 
 " call minpac#add('honza/vim-snippets')
-
-" snippets : Track the engine.
-" call minpac#add('Shougo/neosnippet')
-" call minpac#add('Shougo/neosnippet-snippets')
-" Snippets are separated from the engine. Add this if you want them:
 
 " ultisnips
 call minpac#add('SirVer/ultisnips')
@@ -123,8 +134,8 @@ call minpac#add('bentayloruk/vim-react-es6-snippets')
 
 
 " LINTING {{{1
-" call minpac#add("neomake/neomake")
-call minpac#add("w0rp/ale")
+" call minpac#add('neomake/neomake')
+call minpac#add('w0rp/ale')
 
 " LANGUAGES SPECIFIC {{{1
 
@@ -138,11 +149,10 @@ call minpac#add('bps/vim-textobj-python', {'for': ['python', 'python3']})
 " Javascript js
 "call minpac#add('vimlab/neojs') " workd with plug
 " call minpac#add('neovim/node-host') " in neovim
+call minpac#add('moll/vim-node')
 call minpac#add('mklabs/mdn.vim') " documentation
 " snippets
 call minpac#add('isRuslan/vim-es6')
-" call minpac#add('pangloss/vim-javascript')
-" eslint
 
 " JavaScript indexindent support
 " call minpac#add('pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] })
@@ -170,6 +180,9 @@ call minpac#add('Quramy/tsuquyomi', { 'for': 'typescript', 'do': 'npm install' }
 call minpac#add('clausreinke/typescript-tools.vim', { 'for': 'typescript' })
 " typescript support
 call minpac#add('leafgarland/typescript-vim', { 'for': 'typescript' })
+
+" Reason ML
+call minpac#add('reasonml-editor/vim-reason-plus')
 
 " PHP :
 call minpac#add('Shougo/vimproc', {'do': 'make'})
